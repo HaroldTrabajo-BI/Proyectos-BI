@@ -47,7 +47,7 @@ const trabajos = [
   {
     id: "metro-panama",
     categoria: "proyectos",
-    titulo: "Pipeline ETL: Datos del Metro de Panamá",
+    titulo: "Pipeline ETL",
     descripcion:
       "Extracción, limpieza profunda de metadatos y unificación de registros históricos de la Línea 1 y 2 en Python.",
     herramientas: ["Python", "Pandas", "ETL", "VS Code"],
@@ -340,10 +340,6 @@ function PaginaCategoria({ categoriaId }) {
               className="trabajo-card"
               key={trabajo.id}
             >
-
-              <span className="estado-ejemplo">
-                Ejemplo editable
-              </span>
 
               <h2>{trabajo.titulo}</h2>
 
