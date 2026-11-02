@@ -16,10 +16,9 @@ import {
 const areas = [
   {
     id: "proyectos",
-    titulo: "Proyectos",
-    especialidad: "Automatización de procesos",
+    titulo: "Caso de Estudio: Demanda del Metro de Panamá (2018–2026)",
     descripcion:
-      "Desarrollo de herramientas para optimizar tareas, documentos y flujos de trabajo.",
+      "Proyecto end-to-end que integra la automatización de un pipeline ETL en Python, la creación de un dashboard interactivo en Power BI y un informe analítico sobre el flujo de pasajeros en la Línea 1 y Línea 2.",
     enlace: "Ver proyectos",
     icono: "capas",
   },
@@ -43,12 +42,6 @@ const areas = [
   },
 ];
 
-/*
-  TRABAJOS DE EJEMPLO
-
-  Posteriormente reemplazaremos esta información
-  por tus proyectos reales.
-*/
 
 const trabajos = [
   {
@@ -281,10 +274,6 @@ function Inicio() {
               </div>
 
               <h2>{area.titulo}</h2>
-
-              <p className="especialidad">
-                {area.especialidad}
-              </p>
 
               <p className="descripcion">
                 {area.descripcion}
