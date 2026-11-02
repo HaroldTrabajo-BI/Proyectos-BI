@@ -45,16 +45,16 @@ const areas = [
 
 const trabajos = [
   {
-    id: "automatizacion-pdf",
+    id: "metro-panama",
     categoria: "proyectos",
-    titulo: "Automatización de documentos PDF",
+    titulo: "Pipeline ETL: Datos del Metro de Panamá",
     descripcion:
-      "Herramienta para organizar, combinar y procesar documentos PDF.",
-    herramientas: ["Python", "PyMuPDF", "VS Code"],
+      "Extracción, limpieza profunda de metadatos y unificación de registros históricos de la Línea 1 y 2 en Python.",
+    herramientas: ["Python", "Pandas", "ETL", "VS Code"],
     problema:
-      "Los procesos documentales repetitivos requieren tiempo y pueden generar errores manuales.",
+      "Los datos abiertos institucionales presentaban formatos inconsistentes, metadatos innecesarios y separadores que impedían el análisis.",
     solucion:
-      "Diseñar una herramienta que permita procesar archivos PDF siguiendo reglas predefinidas.",
+      "Desarrollo de script en Python con Pandas para automatizar la limpieza, estructuración de fechas y unificación de tramos en un archivo maestro.",
   },
   {
     id: "gestion-procesos",
