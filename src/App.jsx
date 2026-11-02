@@ -17,9 +17,8 @@ const areas = [
   {
     id: "proyectos",
     titulo: "Caso de Estudio 1",
-    especialidad: "Caso de Estudio: Demanda del Metro de Panamá (2018–2026)",
-    descripcion:
-      "Desarrollo de herramientas para optimizar tareas, documentos y flujos de trabajo.",
+    especialidad: "Demanda del Metro de Panamá (2018–2026)",
+    descripcion: "Procesamiento de datos históricos, visualización de indicadores y análisis del flujo de usuarios en la Línea 1 y 2.",
     enlace: "Ver proyectos",
     icono: "capas",
   },
