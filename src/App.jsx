@@ -19,7 +19,7 @@ const areas = [
     titulo: "Caso de Estudio 1",
     especialidad: "Demanda del Metro de Panamá (2018–2026)",
     descripcion: "Procesamiento de datos históricos, visualización de indicadores y análisis del flujo de usuarios en la Línea 1 y 2.",
-    enlace: "Ver proyectos",
+    enlace: "Ver proyecto",
     icono: "capas",
   },
   {
@@ -235,9 +235,6 @@ function Inicio() {
         <div className="contenedor presentacion-interior">
           <div className="presentacion-texto">
 
-            <p className="eyebrow">
-              PROYECTOS · INFORMES · DASHBOARDS
-            </p>
 
             <h1>
               Soluciones digitales
