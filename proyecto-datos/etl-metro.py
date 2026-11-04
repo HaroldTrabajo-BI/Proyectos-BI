@@ -63,13 +63,13 @@ def procesar_linea(url_descarga, nombre_linea, numero_tramo):
         df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
 
     #Incorporación de columnas de negocio: Tramo y Fecha (datetime)
-    df['Tramo'] = numero_tramo
+    df['Línea'] = numero_tramo
     df['Mes_Num'] = df['Mes'].map(MESES_A_NUMERO)
     df['Fecha'] = pd.to_datetime(df['Año'] + '-' + df['Mes_Num'] + '-01')
     df = df.drop(columns=['Mes_Num'])
 
     #Reordenamiento de columnas
-    df = df[['Fecha', 'Tramo', 'Mes', 'Año', 'Días Laborables', 'Días Sábados', 'Días Feriados']]
+    df = df[['Fecha', 'Línea', 'Mes', 'Año', 'Días Laborables', 'Días Sábados', 'Días Feriados']]
     
     print(f"✨ ¡{nombre_linea} procesada con éxito!")
     return df
