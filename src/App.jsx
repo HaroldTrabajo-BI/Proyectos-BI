@@ -84,6 +84,10 @@ df = df.drop(columns=['Mes_Num'])
 
 # Reordenamiento de columnas
 df = df[['Fecha', 'Línea', 'Mes', 'Año', 'Días Laborables', 'Días Sábados', 'Días Feriados']]`,
+    codigoGuardado: `df_maestro = pd.concat([df_l1, df_l2], ignore_index=True)
+
+    archivo_salida = 'proyecto-datos/demanda_metro_maestro.csv'
+    df_maestro.to_csv(archivo_salida, index=False, encoding='utf-8')`
   },
   {
     id: "gestion-procesos",
@@ -438,7 +442,7 @@ function DetalleTrabajo() {
         <div className="ficha-contenido">
 
           <div className="ficha-principal">
-
+            
             <section className="bloque-ficha">
               <h2>01. Objetivo</h2>
               <p>{trabajo.objetivo}</p>
@@ -827,26 +831,165 @@ function DetalleTrabajo() {
             <section className="bloque-ficha">
               <h2>06. Consolidación y exportación de datos</h2>
               <p>{trabajo.carga}</p>
+
+              {/* Lista detallada de los parametros */}
+                    <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "#475569", display: "flex", flexDirection: "column", gap: "0.5rem", fontSize: "0.9rem" }}>
+                      <li>
+                        <strong>pd.concat([df_l1, df_l2])</strong> Combina los dos DataFrames, colocando los registros de la Línea 2 debajo de los registros de la Línea 1 (consolidación vertical).
+                      </li>
+                      <li>
+                        <strong>ignore_index=True</strong> Genera un nuevo índice secuencial para todos los registros, evitando conservar los índices originales de cada DataFrame.
+                      </li>
+                      <li>
+                        <strong>archivo_salida</strong> Define la ruta y el nombre del archivo CSV que se generará.
+                      </li>
+                      <li>
+                        <strong>df_maestro.to_csv()</strong> Exporta el DataFrame consolidado a un archivo CSV.
+                      </li>
+                      <li>
+                        <strong>index=False</strong> Evita que Pandas exporte el índice del DataFrame como una columna adicional.
+                      </li>
+                      <li>
+                        <strong>encoding='utf-8'</strong> Establece la codificación de caracteres para conservar correctamente tildes y caracteres especiales.
+                      </li>
+                    </ul>
+
+              {/* Recuadro de código Guardado CSV */}
+                    <div style={{ 
+                      background: "#0F172A", 
+                      color: "#E2E8F0", 
+                      padding: "1.25rem", 
+                      borderRadius: "8px",
+                      marginTop: "0.5rem", 
+                      fontFamily: "monospace", 
+                      fontSize: "0.85rem",
+                      overflowX: "auto",
+                      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"}}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem", fontSize: "0.75rem", borderBottom: "1px solid #334155", paddingBottom: "0.3rem", color: "#94A3B8" }}>
+                        <span>🐍 Código</span>
+                      </div>
+                      <pre style={{ margin: 0, fontFamily: "inherit", whiteSpace: "pre-wrap" }}>
+                        <code>{trabajo.codigoGuardado}</code>
+                      </pre>
+                    </div>
             </section>
 
           </div>
 
-          <aside className="ficha-lateral">
-            <h3>Ficha técnica</h3>
+          <aside>
+            {/* Contenedor Principal: Diagrama ETL Vertical Neón */}
+            <div style={{ 
+              background: "#0F172A", 
+              border: "1px solid #1E293B", 
+              borderRadius: "16px", 
+              padding: "1.5rem", 
+              color: "#F8FAFC",
+              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)",
+              fontSize: "0.85rem"
+            }}>
+              {/* Encabezado del Diagrama */}
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem", borderBottom: "1px solid #1E293B", paddingBottom: "1rem" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "8px", overflow: "hidden", border: "1px solid #38BDF8", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(56, 189, 248, 0.1)" }}>
+                  <img src="tren.png" alt="Icono Tren" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: "1.1rem", fontWeight: "700", color: "#F8FAFC" }}>Flujo del proceso ETL</h3>
+                  <p style={{ margin: 0, fontSize: "0.75rem", color: "#94A3B8" }}>Demanda de pasajeros · Metro de Panamá</p>
+                </div>
+              </div>
 
-            <p className="titulo-dato">Categoría</p>
-            <p>{area.titulo}</p>
+              {/* Contenedor de Fases Verticales */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", alignItems: "center" }}>
+                
+                {/* FASE 1: FUENTES DE DATOS (Cian Neón) */}
+                <div style={{ width: "100%", background: "#1E293B", border: "1px solid #0891B2", borderRadius: "12px", padding: "1rem", boxShadow: "0 0 15px rgba(6, 182, 212, 0.15)" }}>
+                  <div style={{ display: "inline-block", background: "rgba(6, 182, 212, 0.2)", color: "#22D3EE", padding: "0.2rem 0.6rem", borderRadius: "20px", fontSize: "0.7rem", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+                    FUENTES DE DATOS
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
+                    {/* Icono de Fuente */}
+                    <div style={{ width: "48px", height: "48px", borderRadius: "8px", border: "1px dashed #06B6D4", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(6, 182, 212, 0.05)", color: "#22D3EE", flexShrink: 0 }}>
+                      <img src="fuente.png" alt="Icono Fuente" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: "600", color: "#E2E8F0" }}>Línea 1 & Línea 2</div>
+                      <div style={{ fontSize: "0.75rem", color: "#94A3B8" }}>Archivos CSV independientes</div>
+                    </div>
+                  </div>
+                  <div style={{ borderTop: "1px solid #334155", paddingTop: "0.5rem", fontSize: "0.75rem", color: "#64748B" }}>
+                    Datos Abiertos de Panamá
+                  </div>
+                </div>
 
-            <p className="titulo-dato">Tecnologías</p>
+                {/* Flecha Neón */}
+                <div style={{ color: "#38BDF8", fontSize: "1.2rem", fontWeight: "bold", textShadow: "0 0 8px #38BDF8", margin: "0.2rem 0" }}>↓</div>
 
-            <div className="etiquetas">
-              {trabajo.herramientas.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
+                {/* FASE 2: EXTRACCIÓN (Azul Neón) */}
+                <div style={{ width: "100%", background: "#1E293B", border: "1px solid #2563EB", borderRadius: "12px", padding: "1rem", boxShadow: "0 0 15px rgba(59, 130, 246, 0.15)" }}>
+                  <div style={{ display: "inline-block", background: "rgba(59, 130, 246, 0.2)", color: "#60A5FA", padding: "0.2rem 0.6rem", borderRadius: "20px", fontSize: "0.7rem", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+                    EXTRACCIÓN
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
+                    {/* Icono de Extracción */}
+                    <div style={{ width: "48px", height: "48px", borderRadius: "8px", border: "1px dashed #3B82F6", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(59, 130, 246, 0.05)", color: "#60A5FA", flexShrink: 0 }}>
+                      <img src="codigo.png" alt="Icono Extracción" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: "600", color: "#E2E8F0" }}>Python + Requests</div>
+                      <div style={{ fontSize: "0.75rem", color: "#94A3B8" }}>Peticiones HTTP automatizadas</div>
+                    </div>
+                  </div>
+                  <div style={{ borderTop: "1px solid #334155", paddingTop: "0.5rem", fontSize: "0.75rem", color: "#64748B" }}>
+                    Descarga directa de fuentes web
+                  </div>
+                </div>
+
+                {/* Flecha Neón */}
+                <div style={{ color: "#34D399", fontSize: "1.2rem", fontWeight: "bold", textShadow: "0 0 8px #34D399", margin: "0.2rem 0" }}>↓</div>
+
+                {/* FASE 3: TRANSFORMACIÓN (Verde Neón) */}
+                <div style={{ width: "100%", background: "#1E293B", border: "1px solid #059669", borderRadius: "12px", padding: "1rem", boxShadow: "0 0 15px rgba(16, 185, 129, 0.15)" }}>
+                  <div style={{ display: "inline-block", background: "rgba(16, 185, 129, 0.2)", color: "#34D399", padding: "0.2rem 0.6rem", borderRadius: "20px", fontSize: "0.7rem", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+                    TRANSFORMACIÓN
+                  </div>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}>
+                    {/* Icono de Transformación */}
+                    <div style={{ width: "48px", height: "48px", borderRadius: "8px", border: "1px dashed #10B981", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(16, 185, 129, 0.05)", color: "#34D399", flexShrink: 0 }}>
+                      <img src="transformacion.png" alt="Icono Transformación" style={{ width: "90%", height: "90%", objectFit: "cover" }} />
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: "1rem", color: "#CBD5E1", fontSize: "0.78rem", display: "flex", flexDirection: "column", gap: "0.3rem" }}>
+                      <li>Separación de fechas (Mes / Año)</li>
+                      <li>Limpieza numérica</li>
+                      <li>Creación de columnas de negocio</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Flecha Neón */}
+                <div style={{ color: "#C084FC", fontSize: "1.2rem", fontWeight: "bold", textShadow: "0 0 8px #C084FC", margin: "0.2rem 0" }}>↓</div>
+
+                {/* FASE 4: CONSOLIDACIÓN (Púrpura Neón) */}
+                <div style={{ width: "100%", background: "#1E293B", border: "1px solid #9333EA", borderRadius: "12px", padding: "1rem", boxShadow: "0 0 15px rgba(168, 85, 247, 0.15)" }}>
+                  <div style={{ display: "inline-block", background: "rgba(168, 85, 247, 0.2)", color: "#C084FC", padding: "0.2rem 0.6rem", borderRadius: "20px", fontSize: "0.7rem", fontWeight: "700", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+                    CONSOLIDACIÓN
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.75rem" }}>
+                    {/* Icono de Consolidación */}
+                    <div style={{ width: "48px", height: "48px", borderRadius: "8px", border: "1px dashed #A855F7", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(168, 85, 247, 0.05)", color: "#C084FC", flexShrink: 0 }}>
+                      <img src="datosFinal.png" alt="Icono Consolidación" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: "600", color: "#E2E8F0" }}>Unión de ambas líneas</div>
+                      <div style={{ fontSize: "0.75rem", color: "#94A3B8" }}>Consolidación vía <code>pd.concat()</code></div>
+                    </div>
+                  </div>
+                  <div style={{ borderTop: "1px solid #334155", paddingTop: "0.5rem", fontSize: "0.75rem", color: "#A855F7", fontWeight: "600" }}>
+                    demanda_metro_maestro.csv
+                  </div>
+                </div>
+
+              </div>
             </div>
-
-            <p className="titulo-dato">Estado</p>
-            <p>Plantilla pendiente de personalizar</p>
 
           </aside>
 
@@ -865,10 +1008,6 @@ function PiePagina() {
 
         <div>
           <strong>Proyectos BI - Harold Torres</strong>
-          <p>
-            Proyectos, informes y dashboards
-            orientados a resultados.
-          </p>
         </div>
 
         <a href="mailto:tucorreo@ejemplo.com">
