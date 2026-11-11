@@ -812,7 +812,8 @@ function DetalleTrabajo() {
                             </strong>
 
                             <p>
-                                Durante 2019 se alcanzó el mayor volumen anual de pasajeros, sumando 8,194,366 usuarios en la Línea 1 y 3,261,753 en la Línea 2.
+                                Durante 2019 se alcanzó el mayor volumen anual de pasajeros, sumando 8,194,366 usuarios en la Línea 1 y 3,261,753 en la Línea 2. 
+                                Esto podría estar relacionado, en parte, con la Jornada Mundial de la Juventud (JMJ), celebrada en Panamá durante enero.
                             </p>
                         </article>
                         {/* Cuarta tarjeta */}
@@ -1080,6 +1081,25 @@ function PiePagina() {
   );
 }
 
+
+/* PAGINA EN CONSTRUCCION */
+function EnConstruccion({ titulo }) {
+  return (
+    <main className="pagina-interior">
+      <div className="contenedor" style={{ textAlign: "center", padding: "4rem 1rem" }}>
+        <Link to="/" className="volver" style={{ display: "inline-block", marginBottom: "2rem" }}>
+          ← Volver al inicio
+        </Link>
+        <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🚧</div>
+        <h1 className="titulo-interior">{titulo}</h1>
+        <p className="descripcion-interior" style={{ maxWidth: "500px", margin: "0 auto" }}>
+          Este caso de estudio se encuentra actualmente en desarrollo y estructuración para su presentación.
+        </p>
+      </div>
+    </main>
+  );
+}
+
 /* RUTAS PRINCIPALES */
 
 function App() {
@@ -1100,17 +1120,13 @@ function App() {
         />
 
         <Route
-          path="/informes"
-          element={
-            <PaginaCategoria categoriaId="informes" />
-          }
+          path="/proyectos2"
+          element={<EnConstruccion titulo="Caso de Estudio 2 — En Construcción" />}
         />
 
         <Route
-          path="/dashboards"
-          element={
-            <PaginaCategoria categoriaId="dashboards" />
-          }
+          path="/proyectos3"
+          element={<EnConstruccion titulo="Caso de Estudio 3 — En Construcción" />}
         />
 
         <Route
