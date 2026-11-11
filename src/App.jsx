@@ -1087,6 +1087,7 @@ function EnConstruccion({ titulo }) {
   return (
     <main className="pagina-interior">
       <div className="contenedor" style={{ textAlign: "center", padding: "4rem 1rem" }}>
+        {/* Usar <Link> de react-router-dom en lugar de <a href="/"> */}
         <Link to="/" className="volver" style={{ display: "inline-block", marginBottom: "2rem" }}>
           ← Volver al inicio
         </Link>
