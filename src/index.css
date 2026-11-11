@@ -760,3 +760,79 @@ h1 {
     padding: 24px;
   }
 }
+
+/*Separación del dashboard y los hallazgos*/
+
+.bloque-hallazgos {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #E2E8F0;
+}
+
+.separador-analisis {
+    margin-bottom: 1rem;
+}
+
+.separador-analisis span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #10728c;
+}
+
+.bloque-hallazgos h2 {
+    color: #153E75;
+    margin-bottom: 0.5rem;
+}
+
+.intro-hallazgos {
+    color: #64748B;
+    margin-bottom: 1.5rem;
+}
+
+.grid-hallazgos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.tarjeta-hallazgo {
+    background: #FFFFFF;
+    border: 1px solid #DCE5F0;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.tarjeta-hallazgo h3 {
+    color: #1E293B;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0.75rem 0;
+}
+
+.etiqueta-hallazgo {
+    color: #ff8c00;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.valor-hallazgo {
+    display: block;
+    color: #153E75;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.tarjeta-hallazgo p {
+    color: #64748B;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .grid-hallazgos {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -23,20 +23,20 @@ const areas = [
     icono: "capas",
   },
   {
-    id: "informes",
-    titulo: "Informes",
-    especialidad: "Análisis y reportes",
+    id: "proyectos2",
+    titulo: "Caso de Estudio 2",
+    especialidad: "Pendiente",
     descripcion:
-      "Presentación de resultados, indicadores de gestión y análisis de información.",
+      "Pendiente.",
     enlace: "Ver informes",
     icono: "documento",
   },
   {
-    id: "dashboards",
-    titulo: "Dashboards",
-    especialidad: "Paneles interactivos",
+    id: "proyectos3",
+    titulo: "Caso de Estudio 3",
+    especialidad: "Pendiente",
     descripcion:
-      "Visualización de indicadores, estadísticas y seguimiento de resultados.",
+      "Pendiente.",
     enlace: "Ver dashboards",
     icono: "grafico",
   },
@@ -88,18 +88,20 @@ df = df[['Fecha', 'Línea', 'Mes', 'Año', 'Días Laborables', 'Días Sábados',
 
     archivo_salida = 'proyecto-datos/demanda_metro_maestro.csv'
     df_maestro.to_csv(archivo_salida, index=False, encoding='utf-8')`,
+    enlacePython:"https://github.com/HaroldTrabajo-BI/Proyectos-BI/blob/main/proyecto-datos/etl-metro.py",
+    enlaceCSVmaestro:"https://github.com/HaroldTrabajo-BI/Proyectos-BI/blob/main/proyecto-datos/demanda_metro_maestro.csv",
 
   },
   {
     id: "Reporte-Metro",
     categoria: "proyectos",
-    titulo: "Informes y reportes de gestión",
     descripcion:
-      "Elaboración de informes ejecutivos y reportes interactivos para presentar indicadores y resultados.",
+      "Diseño y desarrollo de informe ejecutivo interactivo en Power BI para consultar resultados, analizar indicadores de desempeño y evaluar tendencias.",
+    titulo: "Informes y reportes de gestión",
     objetivo:
-      "Desarrollar informes ejecutivos y reportes visuales mediante Power BI, integrando y organizando información"+ 
-      " relevante en formatos claros y estructurados. El propósito es facilitar la interpretación de los datos, identificar tendencias, evaluar indicadores de desempeño"+ 
-      " y proporcionar información útil que contribuya al seguimiento de resultados y a una toma de decisiones fundamentada.",
+      "Presentar los informes ejecutivos y reportes visuales desarrollados mediante Excel y Power BI, mostrando el proceso de organización y análisis de la información proveniente de archivos CSV."+ 
+      " A través de estos trabajos se busca destacar la aplicación de herramientas de análisis de datos para estructurar información, "+ 
+      "visualizar indicadores, identificar tendencias y facilitar la interpretación de resultados.",
     herramientas: ["Excel", "Power BI", "Datos"],
     problema:
       "La información y los indicadores requieren una presentación estructurada que facilite su consulta e interpretación.",
@@ -123,7 +125,7 @@ df = df[['Fecha', 'Línea', 'Mes', 'Año', 'Días Laborables', 'Días Sábados',
             descripcion: "Distribución de pasajeros por mes."
         }],
 
-pbixUrl: "sha256:00bc16d3b3660dce8b0e83b28fd7ffc5378bb4e4179bc11e95fa70747a9da0f5"
+pbixUrl: "https://github.com/HaroldTrabajo-BI/Proyectos-BI/releases/download/v1.0/Demanda_Metro_Panama.pbix",
 
   },
   {
@@ -271,7 +273,7 @@ function Encabezado() {
 
         <a
           className="boton-contacto"
-          href="mailto:tucorreo@ejemplo.com"
+          href="mailto:haroldtorres.trabajo@gmail.com"
         >
           Contacto
         </a>
@@ -471,7 +473,7 @@ function DetalleTrabajo() {
 
           <div className="ficha-principal">
             {esMetro ? (
-              /* =================== VISTA 1: METRO DE PANAMÁ (ETL) =================== */
+              /* =================== VISTA 1:METRO DE PANAMÁ (ETL) =================== */
               <>
                 {/* CONTENIDO EXCLUSIVO: METRO DE PANAMÁ (ETL) */}
                 <section className="bloque-ficha">
@@ -635,27 +637,57 @@ function DetalleTrabajo() {
                       <code>{trabajo.codigoGuardado}</code>
                     </pre>
                   </div>
+
+                  <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+  
+                    <a
+                      href={trabajo.enlacePython}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "#2563EB", textDecoration: "none", fontWeight: "500" }}
+                    >
+                      <span>💻</span> Ver código fuente en Python ↗
+                    </a>
+
+                    <a
+                      href={trabajo.enlaceCSVmaestro}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "#2563EB", textDecoration: "none", fontWeight: "500" }}
+                    >
+                      <span>📊</span> CSV Maestro Consolidado ↗
+                    </a>
+
+                  </div>
                 </section>
               </>
             ) : esInformeGestion ? (
-              /* =================== VISTA 2: TU NUEVO INFORME / REPORTE =================== */
+              /* =================== VISTA 2:INFORME / REPORTE =================== */
               <>
-                {/* 1. SECCIÓN DE OBJETIVO */}
+                {/*1.SECCIÓN DE OBJETIVO*/}
                 <section className="bloque-ficha">
                   <h2>01. Objetivo</h2>
                   <p>{trabajo.objetivo}</p>
                 </section>
 
-                {/* 2. SECCIÓN DE DESCRIPCION */}
-                <section className="bloque-ficha">
-                  <h2>02. Descripción</h2>
-                  <p>{trabajo.descripcion}</p>
+
+                {/*2. HERRAMIENTAS*/}
+                <section className="bloque-ficha" style={{ marginTop: "1.5rem" }}>
+                  <h2>02. Herramientas utilizadas</h2>
+                  <div className="etiquetas" style={{ marginTop: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                    {trabajo.herramientas.map((herramienta) => (
+                      <span key={herramienta} style={{ background: "#E2E8F0", padding: "0.4rem 0.8rem", borderRadius: "6px", fontSize: "0.85rem", fontWeight: "500", color: "#1E293B" }}>
+                        {herramienta}
+                      </span>
+                    ))}
+                  </div>
                 </section>
 
-                {/* 2. TARJETA DE VISUALIZACIÓN Y DESCARGA (Power BI / Imagen) */}
+
+                {/*3.TARJETA DE VISUALIZACIÓN Y DESCARGA (Power BI / Imagen)*/}
                 <section className="bloque-ficha">
-                  <h2>02. Visualización del Dashboard</h2>
-                  <p>Explora la vista previa del reporte y descarga el modelo de datos asociado:</p>
+                  <h2>03. Visualización del Dashboard</h2>
+                  <p>Se presenta una vista previa del reporte desarrollado en Power BI, donde se muestran los principales indicadores, gráficos y visualizaciones del análisis. Asimismo, se proporciona acceso al archivo PBIX para su descarga y exploración en Power BI Desktop, permitiendo consultar los filtros, las visualizaciones y el modelo de datos asociado:</p>
 
                   <div style={{ 
                     background: "#0F172A", 
@@ -664,28 +696,43 @@ function DetalleTrabajo() {
                     border: "1px solid #1E293B", 
                     color: "#F8FAFC", 
                     marginTop: "1rem",
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)"
-                  }}>
-                    <h3 style={{ margin: "0 0 0.5rem 0", fontSize: "1.1rem", color: "#38BDF8" }}>
-                      {trabajo.titulo}
-                    </h3>
-                    <p style={{ color: "#94A3B8", fontSize: "0.85rem", marginBottom: "1.25rem" }}>
-                      {trabajo.descripcion}
-                    </p>
+                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)"}}>
+                    <h3 style={{ margin: "0 0 0.5rem 0", fontSize: "1.1rem", color: "#d7d7d7" }}>Vista general del Dashboard</h3>
+                    
 
-                    {/* IMAGEN DEL DASHBOARD QUE SUBISTE A GITHUB */}
+                    {/*IMAGEN DEL DASHBOARD Vista General*/}
                     <div style={{ marginBottom: "1.25rem", borderRadius: "8px", overflow: "hidden", border: "1px solid #334155" }}>
                       <img 
-                        src="https://raw.githubusercontent.com/TU_USUARIO/TU_REPO/main/powerbi/tu-imagen.png" 
+                        src={`${import.meta.env.BASE_URL}reporte-metro/VistaGeneral.png`}
                         alt="Vista previa del dashboard" 
                         style={{ width: "100%", height: "auto", display: "block" }} 
                       />
                     </div>
 
-                    {/* BOTONES DE ACCIÓN (ENLACE A GITHUB) */}
+                    <h3 style={{ margin: "0 0 0.5rem 0", fontSize: "1.1rem", color: "#d7d7d7" }}>Vista filtro por año</h3>
+                    {/*IMAGEN DEL DASHBOARD Vista Filtro por año*/}
+                    <div style={{ marginBottom: "1.25rem", borderRadius: "8px", overflow: "hidden", border: "1px solid #334155" }}>
+                      <img 
+                        src={`${import.meta.env.BASE_URL}reporte-metro/VistaFiltroAnio.png`}
+                        alt="Vista previa del dashboard" 
+                        style={{ width: "100%", height: "auto", display: "block" }} 
+                      />
+                    </div>
+
+                    <h3 style={{ margin: "0 0 0.5rem 0", fontSize: "1.1rem", color: "#d7d7d7" }}>Vista filtro por mes</h3>
+                    {/*IMAGEN DEL DASHBOARD Vista Filtro por mes*/}
+                    <div style={{ marginBottom: "1.25rem", borderRadius: "8px", overflow: "hidden", border: "1px solid #334155" }}>
+                      <img 
+                        src={`${import.meta.env.BASE_URL}reporte-metro/VistaFiltroMes.png`}
+                        alt="Vista previa del dashboard" 
+                        style={{ width: "100%", height: "auto", display: "block" }} 
+                      />
+                    </div>
+
+                    {/*ENLACE A GITHUB*/}
                     <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
                       <a 
-                        href="https://github.com/TU_USUARIO/TU_REPO/raw/main/powerbi/reporte.pbix" 
+                        href={trabajo.pbixUrl}
                         target="_blank" 
                         rel="noopener noreferrer" 
                         style={{ background: "#2563EB", color: "#fff", padding: "0.6rem 1.2rem", borderRadius: "8px", textDecoration: "none", fontWeight: "600", fontSize: "0.85rem", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}
@@ -696,17 +743,190 @@ function DetalleTrabajo() {
                   </div>
                 </section>
 
-                {/* 3. HERRAMIENTAS */}
-                <section className="bloque-ficha" style={{ marginTop: "1.5rem" }}>
-                  <h2>03. Herramientas utilizadas</h2>
-                  <div className="etiquetas" style={{ marginTop: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                    {trabajo.herramientas.map((herramienta) => (
-                      <span key={herramienta} style={{ background: "#E2E8F0", padding: "0.4rem 0.8rem", borderRadius: "6px", fontSize: "0.85rem", fontWeight: "500", color: "#1E293B" }}>
-                        {herramienta}
-                      </span>
-                    ))}
-                  </div>
+                <section className="bloque-hallazgos">
+
+                    <div className="separador-analisis">
+                        <span>ANÁLISIS DE DATOS</span>
+                    </div>
+
+                    <h2>Lectura de resultados</h2>
+
+                    <p className="intro-hallazgos">
+                        Principales hallazgos identificados a partir
+                        del análisis histórico de la demanda de pasajeros.
+                    </p>
+
+                    <div className="grid-hallazgos">
+                        {/* Primera tarjeta */}
+                        <article className="tarjeta-hallazgo destacado">
+                            <span className="etiqueta-hallazgo">
+                                DEMANDA ACUMULADA
+                            </span>
+
+                            <h3>
+                                ¿Cuántos pasajeros se registraron
+                                durante el período analizado?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                78,872,677
+                            </strong>
+
+                            <p>
+                                Pasajeros registrados entre 2018 y 2026,
+                                considerando ambas líneas del Metro de Panamá.
+                            </p>
+                        </article>
+                        {/* Segunda tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                COMPARACIÓN POR LÍNEA
+                            </span>
+
+                            <h3>
+                                ¿Cuál de las dos líneas concentra mayor demanda?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                Línea 1
+                            </strong>
+
+                            <p>
+                                La Línea 1 concentra el 63.3% de la demanda acumulada, con 45,467,189 pasajeros registrados entre 2019 y agosto de 2026, 
+                                superando a la Línea 2, que representa el 36.7%. Esta diferencia evidencia una mayor utilización de la Línea 1 durante los 
+                                años analizados, manteniendo una demanda superior en cada uno de los períodos comparables.
+                            </p>
+                        </article>
+                        {/* Tercera tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                MAYOR DEMANDA ANUAL
+                            </span>
+
+                            <h3>
+                                ¿En qué año se registró la mayor demanda?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                2019 -11,456,119
+                            </strong>
+
+                            <p>
+                                Durante 2019 se alcanzó el mayor volumen anual de pasajeros, sumando 8,194,366 usuarios en la Línea 1 y 3,261,753 en la Línea 2.
+                            </p>
+                        </article>
+                        {/* Cuarta tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                EVOLUCIÓN DE LA DEMANDA
+                            </span>
+
+                            <h3>
+                                ¿Hubo períodos de disminución o recuperación?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                -59.6%
+                            </strong>
+
+                            <p>
+                                La demanda de pasajeros experimentó una fuerte reducción en 2020, coincidiendo con el período de la pandemia de COVID-19. 
+                                A partir de 2021 se observa una recuperación progresiva, alcanzando en 2024 un volumen cercano al registrado antes de la pandemia. 
+                                En 2025 se presentó una ligera disminución del 1.75%.
+                            </p>
+                        </article>
+                        {/* Quinta tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                COMPORTAMIENTO MENSUAL
+                            </span>
+
+                            <h3>
+                                ¿Se observa un comportamiento particular durante determinados meses?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                Diciembre, Enero y Febrero
+                            </strong>
+
+                            <p>
+                                El análisis histórico muestra que diciembre registra los mayores niveles de demanda, manteniendo este comportamiento durante todos los 
+                                años completos entre 2021 y 2025. Esto podría estar relacionado con las fiestas de fin de año, las compras y otras actividades propias de 
+                                la temporada. Por otro lado, enero y febrero presentan una menor cantidad de pasajeros, posiblemente debido a las vacaciones escolares y 
+                                universitarias, que reducen los desplazamientos habituales. Estos resultados permiten identificar variaciones en el uso del Metro a lo largo 
+                                del año y reconocer los períodos de mayor demanda.
+                            </p>
+                        </article>
+                        {/* Sexta tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                TIPO DE JORNADA
+                            </span>
+
+                            <h3>
+                                ¿Qué diferencias existen entre sábados y feriados?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                Sábados tienen mayor demanda que feriados
+                            </strong>
+
+                            <p>
+                                Los registros históricos muestran que los sábados concentran un mayor volumen acumulado de pasajeros. Entre 2018 y agosto de 2026 se contabilizaron 
+                                27,894,580 pasajeros los sábados, frente a 13,600,594 durante los días feriados, lo que representa una diferencia de aproximadamente 14.3 millones de 
+                                pasajeros. Este comportamiento podría estar relacionado con que los sábados se mantienen actividades laborales, comerciales y educativas, mientras que 
+                                los feriados suelen destinarse al descanso, paseos y actividades recreativas. También influye la mayor cantidad de sábados en el calendario en comparación 
+                                con los días feriados.
+                            </p>
+                        </article>
+                        {/* Séptima tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                IMPACTO DE LA LÍNEA 2
+                            </span>
+
+                            <h3>
+                                ¿La apertura de la Línea 2 influyó en el aumento de pasajeros de la Línea 1?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                Definitivamente sí
+                            </strong>
+
+                            <p>
+                                Durante 2019, la Línea 1 registró un incremento del 15.78% en su demanda respecto a 2018. Al comparar los mismos meses, se observa que el crecimiento 
+                                fue mayor después de la apertura de la Línea 2, pasando de un 5.7% antes de su inauguración a un 19.2% durante los meses posteriores.
+                            </p>
+                        </article>
+                        {/* Octava tarjeta */}
+                        <article className="tarjeta-hallazgo">
+                            <span className="etiqueta-hallazgo">
+                                COMBUSTIBLE Y DEMANDA
+                            </span>
+
+                            <h3>
+                                ¿Qué relación existe entre las variaciones del precio de los combustibles y la demanda del Metro?
+                            </h3>
+
+                            <strong className="valor-hallazgo">
+                                Relación indirecta
+                            </strong>
+
+                            <p>
+                                El análisis de los precios de la gasolina de 91 y 95 octanos, así como del diésel, permite identificar diferentes comportamientos en comparación 
+                                con la demanda de pasajeros del Metro de Panamá. Durante 2020, la disminución de los combustibles coincidió con una fuerte caída en la cantidad de 
+                                pasajeros, en un período marcado por la pandemia. Posteriormente, entre 2021 y 2022, el aumento de los precios coincidió con la recuperación de la 
+                                demanda. Sin embargo, durante 2023 y 2024 los combustibles registraron reducciones, mientras que la cantidad de pasajeros continuó creciendo. 
+                                En 2026 también se observaron incrementos importantes en los precios, aunque la demanda presentó variaciones a lo largo de los meses.
+                            </p>
+                        </article>
+
+
+                    </div>
+
                 </section>
+
+
               </>
             ) : (
 
@@ -851,7 +1071,7 @@ function PiePagina() {
           <strong>Proyectos BI - Harold Torres</strong>
         </div>
 
-        <a href="mailto:tucorreo@ejemplo.com">
+        <a href="mailto:haroldtorres.trabajo@gmail.com">
           Escríbeme →
         </a>
 
